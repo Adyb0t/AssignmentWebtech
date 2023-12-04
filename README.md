@@ -8,3 +8,6 @@
   IIUM logo:
   https://seeklogo.com/vector-logo/284710/international-islamic-university-malaysia
 </p>
+<p>
+  Please download the images for the main page
+</p>
