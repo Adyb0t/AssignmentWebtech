@@ -1,8 +1,11 @@
 # AssignmentWebtech
 <h1> Javascript List </h1>
 <p>
-  1. Image popup on "proceed" button (for decoration)
-  2. Auto scroll fter clicking the "proceed" button
+  1. Image popup on "proceed" button (for decoration) <br>
+  2. Auto scroll after clicking the "proceed" button <br>
+  3. When the "kulliyah" option is checked a dropdown menu with kuliyyah option is presented <br>
+  4. Min for each input date to current date <br>
+  5. Back to main page button by auto scrolling up
 </p>
 <h1> References </h1>
 <p>
