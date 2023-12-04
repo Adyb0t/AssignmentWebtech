@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*,
+* ::before,
+* ::after {
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+body{
+    overflow: hidden;
+}
+
+.side{
+    position: fixed;
+    width: auto;
+}
+
+:root{
+    --bar-width: 60px;
+    --bar-height: 10px;
+    --hamburger-gap: 6px;
+    --foreground: black;
+    --background: #FFEEDB;
+    --hamburger-margin: 8px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+.hamburger_menu {
+    --x-width: calc(var(--hamburger-height) * 1.414214);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    width: max-content;
+    position: absolute;
+    top: var(--hamburger-margin);
+    left: var(--hamburger-margin);
+    z-index: 3;
+    cursor: pointer;
+}
+
+.hamburger_menu:has(input:checked){
+    --foreground: #FFEEDB;
+    --background: black;
+}
+
+.hamburger_menu::before,
+.hamburger_menu::after,
+.hamburger_menu input {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--foreground);
+    transform-origin: left center;
+    border-radius: 1000px;
+    transition: 
+    opacity var(--animation-timing), 
+    width var(--animation-timing), 
+    rotate var(--animation-timing), 
+    translate var(--animation-timing),
+    background-color var(--animation-timing);
+}
+
+.hamburger_menu input{
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger_menu:has(input:checked)::before{
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger_menu:has(input:checked)::after{
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+}
+
+.hamburger_menu input:checked{
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    transition: translate var(--animation-timing);
+    translate: -100%;
+    padding: 0.5rem 1rem;
+    padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+    background-color: var(--foreground);
+    color: var(--background);
+    max-width: 35rem;
+    min-height: 100vh;
+}
+
+.sidebar div,h1{
+    font-size: 1.5em;
+}
+
+.sidebar h1{
+    border-style: double;
+    padding: 0.5em 1em;
+}
+
+.hamburger_menu:has(input:checked) + .sidebar {
+    translate: 0;
+}
+
+.container{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+    width: 100vw;
+}
+
+.slides{
+    height: 100vh;
+}
+
+/* Main Page */
+.slide_main{
+    background-image: url(assets/BG.jpg);
+    /* background-color: teal; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo{
+    margin: 1rem;
+}
+
+.logo1 img{
+    height: 15em;
+    width: auto;
+}
+
+.logo2 img{
+    height: 10em;
+    width: auto;
+}
+
+.logo3{
+    color: #FFEEDB;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.logo4{
+    color: #FFEEDB;
+    font-size: 1.25em;
+    text-align: center;
+}
+
+.buttonbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10em;
+    height: 5em;
+    position: relative;
+}
+
+.bg_logo{
+    opacity: 0;
+    text-align: center;
+    margin: 0;
+    width: 10em;
+    height: 5em;
+    position: absolute;
+    top: -3.75em;
+    z-index: 1;
+}
+
+.bg_logo img{
+    height: 5em;
+}
+
+.proceed{
+    position: absolute;
+    font-size: 2em;
+    padding: 0.5rem 1rem;
+    border-radius: .5em;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    color: white;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.proceed:hover{
+    background-color: white;
+    color: black;
+}
+
+
+
+/* Form Slide */
+.slide_form{
+    background-color: beige;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    flex-basis: 90vw;
+    height: auto;
+}
+
+fieldset{
+    border-color: black;
+    border-style: solid;
+    border-width: 0.2em;
+    border-radius: 0.5em;
+    margin: 1em;
+}
+
+legend{
+    text-align: center;
+    padding: 0 1em;
+}
+
+.input_box {
+    margin: 1em;
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+}
+
+.input_box p{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.input_box label{
+    width: 30%;
+    text-align: right;
+    padding-right: 1em;
+}
+
+input[type=text],input[type=email]{
+    width: 45%;
+    transition: width 0.5s ease-in-out;
+}
+
+input[type=text]:focus,input[type=email]:focus{
+    width: 70%;
+}
+
+.consent_box{
+    margin: 1em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+}
+
+.consent_info{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-around;
+}
+
+.infobox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.infobox label{
+    width: auto;
+    text-align: left;
+    margin: 0.5em;
+    padding: 0;
+}
+
+.datebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.datebox div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.datebox div label{
+    text-align: center;
+}
+
+.consent_form{
+    width: auto;
+    font-size: 1rem;
+    margin: 1.5em;
+}
+
+.buttonline{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 2em;
+    
+}
+
+.buttonline button{
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    border-width: 0.1em;
+}
+
+.buttonsubmit{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit{
+    font-size: 1.5em;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5em;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    color: white;
+}
+
+.submit:hover{
+    background-color: white;
+    color: black;
+}
+
+.return_button{
+    margin: 2em;
+    font-size: 1.5em;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5em;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    color: white;
+}
+
+.return_button:hover{
+    background-color: white;
+    color: black;
+}

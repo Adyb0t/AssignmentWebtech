@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styling.css">
+    <script src="code.js"></script>
+</head>
+<body>
+    <div class="side">
+        <label class="hamburger_menu">
+            <input type="checkbox">
+        </label>
+        <aside class="sidebar">
+           <h1>CONTACT US</h1>
+           <div class="title">IIUM ENDOWMENT FUND</div>
+           <div class="address">
+            Level 3, Rectory <br>
+            International Islamic University Malaysia <br>
+            P.O. Box 10 <br>
+            50728 Kuala Lumpur 
+            </div>
+            <div class="contact_info">
+                Tel:    03 6196 4268 <br>
+                Email:  ief@iium.edu.my <br>
+                Website:www.iium.edu.my/ief <br>
+                Facebook:www.facebook.com/ief.official/
+            </div>
+        </aside>
+    </div>
+
+    <div id="container" class="container">
+
+        <!-- main page slide -->
+        <div class="slides slide_main">
+            <div class="logo logo1">
+                <img src="assets\iium logo.png" alt="IIUM LOGO">
+            </div>
+            <div class="logo logo2">
+                <img src="assets\RM1 CAMPAIGN.2.png" alt="RM1 Campaign">
+            </div>
+            <div class="logo logo3">
+                Let your contributions be perpetual for the pleasure of Allah swt
+            </div>
+            <div class="logo logo4">
+                “The example of those who spend their wealth in the
+                way of Allah is like a seed [of grain] which grows seven
+                spikes; in each spike is a hundred grains. And Allah
+                multiplies [His reward] for whom He wills. And Allah is
+                all-Encompassing and Knowing.”
+                Al Baqarah:261
+            </div>
+            <div class="buttonbox">
+                <button onclick="scrll()" onmouseover="reveal()" onmouseout="hide()" class="proceed" type="button">PROCEED</button>
+                <div class="logo bg_logo" id="bg">
+                    <img src="assets\RM1.png" alt="RM1">
+                </div>
+            </div>
+        </div>
+
+        <!-- form slide -->
+        <div class="slides slide_form">
+            <form action="/action_page.php" method="get">
+                <!-- Information Key-in -->
+                <fieldset>
+                    <legend> User Information </legend>
+                    <div class="input_box">
+                        <p>
+                            <label for="username"> Name: </label>
+                            <input type="text" id="username" name="username" placeholder="Name" pattern="[A-Za-z]{3,}" required>
+                        </p>
+                        <p>
+                            <label for="staff_id"> Staff No.: </label>
+                            <input type="text" id="staff_id" name="staff_id" placeholder="ID Number" pattern="[0-9]{0,}" required>
+                        </p>
+                        <p>
+                            <label for="place"> K/C/D/I/O: </label>
+                            <input type="text" id="place" name="place" placeholder="Institution" required>
+                        </p>
+                        <p>
+                            <label for="user_contact"> Contact No.: </label>
+                            <input type="text" id="user_contact" name="user_contact" placeholder="Contact Number" pattern="[0-9]{0,}" required>
+                        </p>
+                        <p>
+                            <label for="user_email"> Email: </label>
+                            <input type="email" id="user_email" name="user_email" placeholder="Email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+                        </p>
+                        <p>
+                            <label for="user_amount"> Amount to be deducted:</label>
+                            <input type="text" id="user_amount" name="user_amount" placeholder="Amount(RM)" pattern="([0-9])+\.[0-9]{2,2}" required>
+                        </p>
+                    </div>
+                </fieldset>
+
+                <!-- Consent Key-In -->
+                <fieldset>
+                    <legend>User Consent</legend>
+                    <div class="consent_box">
+                        <div class="consent_info">
+                            <div class="infobox">
+                                <div class="checkbox">
+                                    <input onchange="checkCheckBox()" type="checkbox" name="kulliyah_option" id="kulliyah_option">
+                                    <label for="kulliyah">Kulliyah Based?</label>
+                                </div>
+                                <div class="datebox">
+                                    <div>
+                                        <label for="start_date">Start</label>
+                                        <input onclick="checkMinDate()" oninput="print_start()" type="date" name="start_date" id="start_date" min="" required>
+                                    </div>
+                                    <div>
+                                        <label for="end_date">End</label>
+                                        <input onclick="checkMinDate()" oninput="print_end()" type="date" name="end_date" id="end_date" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="consent_form">
+                                <p>The above salary deduction will take effect </p>
+                                <p>From  <b id="start"></b></p> 
+                                <p>Until <b id="end"></b></p> or further notice.
+                                <p id="kulliyah_option_input"></p>
+                                <!-- <p>
+                                    For Kulliyah of 
+                                    <select name="kulliyah" id="kulliyah">
+                                        <option value="non">--For Kulliyah Based Only--</option>
+                                        <option value="kict">KICT</option>
+                                        <option value="koe">KOE</option>
+                                        <option value="kaed">KAED</option>
+                                        <option value="kenms">KENMS</option>
+                                        <option value="koed">KOED</option>
+                                        <option value="aikol">AIKOL</option>
+                                        <option value="nursing">Nursing</option>
+                                        <option value="dentistry">Dentistry</option>
+                                        <option value="Science">KOS</option>
+                                        <option value="kahs">KAHS</option>
+                                        <option value="pharmacy">Pharmacy</option>
+                                        <option value="medicine">Medicine</option>
+                                    </select>
+                                    (for Kulliyah Based)
+                                </p> -->
+                            </div>
+                        </div>
+                        <div class="buttonline">
+                            <div>
+                                <p>Submit a pdf of your signature</p>
+                                <input type="file" name="user_signature" id="signature" accept="application/pdf" required>
+                            </div>
+                            <div>
+                                <p>Date for the form submission</p>
+                                <input type="date" onclick="checkMinDate()" name="form_date" id="form_date" required>
+                            </div>
+                        </div>
+                        <div class="buttonsubmit">
+                            <button onclick="" class="submit" type="submit">SUBMIT</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <button onclick="up()" class="return_button">Back To Main Page</button>
+        </div>
+    </div>
+</body>
+</html>
